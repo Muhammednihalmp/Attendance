@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="sidebar" id="sidebar" style="display: none;">
+        <h1>Menu</h1>
+        <button onclick="showAttendance()">Show All Attendance</button>
+        <button onclick="showPresentStudents()">Show Present Students</button>
+        <button onclick="showAbsentStudents()">Show Absent Students</button>
+        <button onclick="balanceAttendance()">Balance Present</button>
+        <button onclick="markMinimalAttendance()">Balance Absent</button>
+        <button onclick="exportAttendance()">Export Attendance</button>
+        <button onclick="resetAttendance()">Reset Attendance</button>
+        <button onclick="deleteData()">Delete Data</button>
+        <button onclick="sendSummary()">Send Summary</button>
+        <button onclick="exitProgram()">Exit</button>
+    </div>    
+    <div class="main-content">
+        <button class="toggle-button" onclick="toggleSidebar()">➔</button>
+        <div class="container" id="login-container">
+            <h1>Login</h1>
+            <div class="input-section">
+                <label for="username">Username:</label>
+                <br>
+                <input type="text" id="username">
+                <br><br>
+                <label for="password">Password:</label>
+                <br>
+                <input type="password" id="password">
+                <br><br>
+                <button onclick="login()">Login</button>
+            </div>
+        </div>
+
+        <div class="container" id="attendance-container" style="display: none;">
+            <h1>Attendance System</h1>
+            <div class="input-section">
+                <label for="department">Department:</label>
+                <br>
+                <select id="department" name="department" required>
+                    <option value="" selected>Please select an option</option>
+                    <option value="ct">Computer Engineering</option>
+                    <option value="ce">Civil Engineering</option>
+                    <option value="me">Mechanical Engineering</option>
+                    <option value="eee">Electrical & Electronics Engineering</option>
+                    <option value="ae">Architecture Engineering</option>
+                    <option value="am">Automobile Engineering</option>
+                </select>
+                <br><br>
+                <label for="semester">Semester:</label>
+                <br>
+                <select id="semester" name="semester" required>
+                    <option value="" selected>Please select an option</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+                <br><br>
+                <label for="classStrength">Class Strength:</label>
+                <br>
+                <input type="number" id="classStrength" min="1">
+                <br><br>
+                <button onclick="generateStudentList()">Generate Student List</button>
+            </div>
+            <div class="input-section" id="studentList" style="display: none;">
+                <h2>Mark Attendance</h2>
+                <label for="date">Date:</label>
+                <input type="date" id="date">
+                <br><br>
+                <div id="students"></div>
+                <button onclick="markAttendance()">Mark Attendance</button>
+            </div>
+            <div id="output" class="output-container"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
