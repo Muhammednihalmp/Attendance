@@ -4,7 +4,10 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
+    overflow: hidden; /* Prevent page scroll */
 }
 
 .sidebar {
@@ -22,6 +25,8 @@ body {
     bottom: 0;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
+    z-index: 1000; /* Ensure the sidebar is on top */
+    overflow-y: auto; /* Make sidebar scrollable */
 }
 
 .sidebar.active {
@@ -58,9 +63,9 @@ body {
     border-radius: 5px;
     cursor: pointer;
     position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
+    top: 10px;
+    left: 10px;
+    z-index: 1100; /* Ensure the button is above the sidebar */
     transition: background-color 0.3s;
 }
 
@@ -73,8 +78,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 220px;
-    transition: margin-left 0.3s;
+    transition: filter 0.3s;
+    padding: 20px;
+    height: 100vh;
+    overflow-y: auto; /* Enable scrolling for the main content */
+}
+
+.main-content.blurred {
+    filter: blur(5px); /* Blur effect when the menu is open */
 }
 
 .container {
@@ -85,7 +96,8 @@ body {
     text-align: center;
     max-width: 400px;
     width: 100%;
-    transition: transform 0.3s ease;
+    max-height: 90vh; /* Limit the height of the container */
+    overflow-y: auto; /* Enable scrolling for the container */
 }
 
 .container h1 {
@@ -103,7 +115,8 @@ body {
     text-align: left;
 }
 
-.input-section input, .input-section select {
+.input-section input,
+.input-section select {
     padding: 10px;
     margin-bottom: 10px;
     width: calc(100% - 22px);
@@ -148,7 +161,8 @@ input[type="radio"]:checked + label {
     margin-top: 20px;
 }
 
-.attendance-table th, .attendance-table td {
+.attendance-table th,
+.attendance-table td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
@@ -187,17 +201,3 @@ input[type="radio"]:checked + label {
         margin-right: 5px;
     }
 }
-
-.main-content {
-    margin-left: 260px;
-    padding: 15px;
-}
-
-.container {
-    max-width: 800px;
-    margin: auto;
-}
-
-
-
-
