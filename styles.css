@@ -1,6 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #ff6600, #ff944d);
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,22 +11,23 @@ body {
 }
 
 .sidebar {
-    background-color: #ff6600;
+    background: linear-gradient(135deg, #ff944d, #ff6600);
     color: white;
-    width: 200px;
+    width: 250px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 15px;
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
     transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: 1000; /* Ensure the sidebar is on top */
-    overflow-y: auto; /* Make sidebar scrollable */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    overflow-y: auto;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar.active {
@@ -34,43 +35,49 @@ body {
 }
 
 .sidebar h1 {
-    color: white;
+    color: #ffeedd;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    font-size: 1.5rem;
 }
 
 .sidebar button {
     background-color: #ff6600;
     color: white;
     border: none;
-    padding: 10px;
-    margin-bottom: 5px;
-    border-radius: 5px;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
     cursor: pointer;
     width: 100%;
     text-align: left;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar button:hover {
     background-color: #cc5200;
+    transform: scale(1.05);
 }
 
 .toggle-button {
     background-color: #ff6600;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 10px 12px;
     margin: 10px;
-    border-radius: 5px;
+    border-radius: 50%;
     cursor: pointer;
     position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 1100; /* Ensure the button is above the sidebar */
-    transition: background-color 0.3s;
+    top: 15px;
+    left: 15px;
+    z-index: 1100;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .toggle-button:hover {
     background-color: #cc5200;
+    transform: rotate(180deg);
 }
 
 .main-content {
@@ -81,52 +88,66 @@ body {
     transition: filter 0.3s;
     padding: 20px;
     height: 100vh;
-    overflow-y: auto; /* Enable scrolling for the main content */
+    overflow-y: auto;
 }
 
 .main-content.blurred {
-    filter: blur(5px); /* Blur effect when the menu is open */
+    filter: blur(6px);
+    transform: scale(0.98);
 }
 
 .container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #ffffff, #ffe6cc);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
-    max-width: 400px;
+    max-width: 500px;
     width: 100%;
-    max-height: 90vh; /* Limit the height of the container */
-    overflow-y: auto; /* Enable scrolling for the container */
+    animation: fadeIn 1s ease-in-out;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .container h1 {
     color: #ff6600;
     margin-bottom: 20px;
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .input-section {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .input-section label {
     margin-right: 10px;
     display: block;
     text-align: left;
+    font-weight: bold;
 }
 
 .input-section input,
 .input-section select {
-    padding: 10px;
-    margin-bottom: 10px;
-    width: calc(100% - 22px);
+    padding: 12px;
+    margin-bottom: 12px;
+    width: calc(100% - 24px);
     box-sizing: border-box;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.input-section input:focus,
+.input-section select:focus {
+    border-color: #ff6600;
+    box-shadow: 0 4px 8px rgba(255, 102, 0, 0.3);
+    outline: none;
 }
 
 .input-section div {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 input[type="radio"] {
@@ -137,22 +158,25 @@ input[type="radio"] + label {
     display: inline-block;
     padding: 10px 20px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 input[type="radio"]:checked + label {
     background-color: #ff6600;
     color: white;
     border-color: #ff6600;
+    transform: scale(1.05);
 }
 
 .output-container {
-    padding: 20px;
+    padding: 25px;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 25px;
+    animation: slideIn 0.7s ease-in-out;
 }
 
 .attendance-table {
@@ -164,7 +188,7 @@ input[type="radio"]:checked + label {
 .attendance-table th,
 .attendance-table td {
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 12px;
     text-align: left;
 }
 
@@ -194,10 +218,33 @@ input[type="radio"]:checked + label {
 
 @media (max-width: 480px) {
     .container {
-        padding: 10px;
+        padding: 15px;
     }
 
     .input-section label {
         margin-right: 5px;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
